@@ -7,3 +7,9 @@ var PORT = process.env.PORT || 3030;
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
+
+app.listen(PORT, function(){
+    console.log("Good job bud. Listening on Port: " + PORT);
+});
