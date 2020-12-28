@@ -8,9 +8,11 @@ var connection = mysql.createConnection({
     database: "hamburgers_db"
 });
 
-
-
-
-
-
+connection.connect(function(err) {
+    if(err) {
+        console.error("Problem: " + err.stack);
+        return;
+    }
+    console.log("Success! Connected as " + connection.threadId);
+});
 module.exports = connection;
