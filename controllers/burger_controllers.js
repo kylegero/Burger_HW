@@ -7,9 +7,23 @@ router.get("/", function (req, res) {
         var theBurgers = {
             hamburgers: data
         };
-    })
-})
+        res.render("index", theBurgers);
+    });
+});
 
+router.post("/insertOne", function (req, res) {
+    burger.insertOne(req.body.burger_name, function (cheese) {
+        res.redirect("/")
+    });
+});
 
+router.post("/updateOne/:id", function (req, res) {
+    var condition = "id= " + req.params.id;
+    burger.updateOne({
+        devoured: req.body.devoured
+    }, condition, function () {
+        res.redirect("/");
+    });
+    });
 
 module.exports = router;
